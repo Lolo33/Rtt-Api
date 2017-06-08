@@ -76,3 +76,7 @@ fos_rest:
     format_listener:
         rules:
             - { path: '^/', priorities: ['json'], fallback_format: 'json' }
+    exception:
+        enabled: true
+        codes:
+            'Symfony\Component\Security\Core\Exception\BadCredentialsException': 401

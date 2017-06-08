@@ -3,7 +3,6 @@
 namespace AppBundle\Controller\Departements;
 
 use AppBundle\Entity\Lieux;
-use AppBundle\Form\DepartementsType;
 use AppBundle\Form\LieuxType;
 use Psr\Container\ContainerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,9 +21,8 @@ class LieuxController extends Controller
         $this->container = $container;
     }
 
-    //serializerGroups={"lieux"}
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"lieux"})
      * @Rest\Get("/departements/{id}/lieux")
      *
      */
@@ -34,12 +32,10 @@ class LieuxController extends Controller
             ->getRepository('AppBundle:Departements')
             ->find($request->get('id'));
 
-        $listeLieux = $this->getDoctrine()->getRepository('AppBundle:Lieux')->findBy(array('lieuDpt' => $dpt));
+        if (empty($dpt))
+            return $this->departementNotFound();
 
-        if (empty($listeLieux))
-            return $this->lieuNotFound();
-
-        return $listeLieux;
+        return $dpt->getLieux();
     }
 
     /**
@@ -60,14 +56,18 @@ class LieuxController extends Controller
 
     /**
      * @Rest\View()
-     * @Rest\Post("/lieux")
+     * @Rest\Post("/departements/{id}/lieux")
      */
     public function postLieuAction(Request $request)
     {
 
         $dpt = $this->getDoctrine()
             ->getRepository('AppBundle:Departements')
-            ->find($request->get('lieuDpt'));
+            ->find($request->get('id'));
+
+        if (empty($dpt)){
+            return $this->departementNotFound();
+        }
 
         $lieu = new Lieux();
         $lieu->setLieuNom($request->get('lieuNom'))
@@ -99,14 +99,18 @@ class LieuxController extends Controller
      */
     public function removeLieuAction(Request $request)
     {
-        return $this->render('AppBundle:Lieux:remove_lieu.html.twig', array(
-            // ...
-        ));
+        $em = $this->get('doctrine.orm.entity_manager');
+        $lieu = $em->getRepository('AppBundle:Lieux')->find($request->get('id'));
+
+        if ($lieu){
+            $em->remove($lieu);
+            $em->flush();
+        }
     }
 
-    private function lieuNotFound()
+    private function departementNotFound()
     {
-        return \FOS\RestBundle\View\View::create(['erreur' => 'Lieu not found'], Response::HTTP_NOT_FOUND);
+        return \FOS\RestBundle\View\View::create(['erreur' => 'Ce département n\'existe pas'], Response::HTTP_NOT_FOUND);
     }
 
 }

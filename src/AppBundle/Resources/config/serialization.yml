@@ -1,11 +1,84 @@
 AppBundle\Entity\Departements:
     attributes:
+        id:
+            groups: ['lieux', 'departements']
+        dptNom:
+            groups: ['lieux', 'departements']
+        dptCode:
+            groups: ['lieux', 'departements']
         lieux:
-            groups: ['lieuDpt']
+            groups: ['departements']
 
 AppBundle\Entity\Lieux:
     attributes:
+        id:
+            groups: ['lieux', 'departements']
+        lieuAdresseL1:
+            groups: ['lieux', 'departements']
+        lieuAdresseL2:
+            groups: ['lieux', 'departements']
+        lieuVille:
+            groups: ['lieux', 'departements']
         lieuNom:
-            groups: ['lieux', 'lieuDpt']
+            groups: ['lieux', 'departements']
         lieuDpt:
             groups: ['lieux']
+
+AppBundle\Entity\Avatars:
+    attributes:
+        id:
+            groups: ['membres', 'avatars']
+        avatarUrl:
+            groups: ['membres', 'avatars']
+        avatarStatut:
+            groups: ['membres', 'avatars']
+        membres:
+            groups: ['avatars']
+
+AppBundle\Entity\Membres:
+    attributes:
+        id:
+            groups: ['membres', 'avatars']
+        membrePseudo:
+            groups: ['membres', 'avatars']
+        membreMail:
+            groups: ['membres', 'avatars']
+        membreTel:
+            groups: ['membres', 'avatars']
+        membreOrga:
+            groups: ['membres', 'avatars']
+        membreDateInscription:
+            groups: ['membres', 'avatars']
+        membreDerniereConnexion:
+            groups: ['membres', 'avatars']
+        membreIpInscription:
+            groups: ['membres', 'avatars']
+        membreIpDerniereConnexion:
+            groups: ['membres', 'avatars']
+        membreCodeValidation:
+            groups: ['membres', 'avatars']
+        membreValidation:
+            groups: ['membres', 'avatars']
+        membreDptCode:
+            groups: ['membres', 'avatars']
+        membreAvatar:
+            groups: ['membres']
+
+AppBundle\Entity\ApiUser:
+    attributes:
+        id:
+          groups: ['userApi', 'auth-token']
+        userClientId:
+          groups: ['userApi', 'auth-token']
+
+AppBundle\Entity\AuthToken:
+    attributes:
+        id:
+            groups: ['auth-token']
+        value:
+            groups: ['auth-token']
+        createdAt:
+            groups: ['auth-token']
+        apiUser:
+            groups: ['auth-token']
+

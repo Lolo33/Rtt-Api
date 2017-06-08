@@ -22,7 +22,7 @@ class DepartementsControllerController extends Controller
     }
 
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"departements"})
      * @Rest\Get("/departements")
      */
     public function getDepartementsAction(Request $request)
@@ -74,6 +74,26 @@ class DepartementsControllerController extends Controller
             return $dpt;
         }else{
             return $form;
+        }
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Delete("/departements/{id}")
+     */
+    public function removeDepartementAction(Request $request){
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dpt = $em->getRepository('AppBundle:Departements')
+            ->find($request->get('id'));
+
+        $listeLieux = $em->getRepository('AppBundle:Lieux')->findBy(array('lieuDpt' => $dpt));
+
+        if ($dpt){
+            foreach ($listeLieux as $unLieu){
+                $em->remove($unLieu);
+            }
+            $em->remove($dpt);
+            $em->flush();
         }
     }
 

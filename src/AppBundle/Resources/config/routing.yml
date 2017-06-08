@@ -29,3 +29,107 @@ post_lieu:
 remove_lieu:
     path:     /lieux/{id}
     defaults: { _controller: AppBundle:Lieux:removeLieu }
+
+get_equipes:
+    path:     equipes
+    defaults: { _controller: AppBundle:Equipes:getEquipes }
+
+get_equipe:
+    path:     equipes/{id}
+    defaults: { _controller: AppBundle:Equipes:getEquipe }
+
+remove_equipe:
+    path:     equipes/{id}
+    defaults: { _controller: AppBundle:Equipes:removeEquipe }
+
+post_equipe:
+    path:     equipes
+    defaults: { _controller: AppBundle:Equipes:postEquipe }
+
+update_equipe:
+    path:     equipes
+    defaults: { _controller: AppBundle:Equipes:updateEquipe }
+
+get_comptes:
+    path:     comptes
+    defaults: { _controller: AppBundle:Comptes:getComptes }
+
+get_compte:
+    path:     comptes/{id}
+    defaults: { _controller: AppBundle:Comptes:getCompte }
+
+post_compte:
+    path:     comptes
+    defaults: { _controller: AppBundle:Comptes:postCompte }
+
+remove_compte:
+    path:     comptes/{id}
+    defaults: { _controller: AppBundle:Comptes:removeCompte }
+
+update_compte:
+    path:     comptes/{id}
+    defaults: { _controller: AppBundle:Comptes:updateCompte }
+
+get_membres:
+    path:     membres
+    defaults: { _controller: AppBundle:Membres:getMembres }
+
+get_membre:
+    path:     membres/{id}
+    defaults: { _controller: AppBundle:Membres:getMembre }
+
+post_membre:
+    path:     membres
+    defaults: { _controller: AppBundle:Membres:postMembre }
+
+delete_membre:
+    path:     membres/{id}
+    defaults: { _controller: AppBundle:Membres:deleteMembre }
+
+update_membre:
+    path:     membres/{id}
+    defaults: { _controller: AppBundle:Membres:updateMembre }
+
+get_avatars:
+    path:     avatars
+    defaults: { _controller: AppBundle:Avatars:getAvatars }
+
+get_avatar:
+    path:     avatars/{id}
+    defaults: { _controller: AppBundle:Avatars:getAvatar }
+
+post_avatar:
+    path:     avatars
+    defaults: { _controller: AppBundle:Avatars:postAvatar }
+
+delete_avatar:
+    path:     avatars/{id}
+    defaults: { _controller: AppBundle:Avatars:deleteAvatar }
+
+update_avatar:
+    path:     avatars
+    defaults: { _controller: AppBundle:Avatars:updateAvatar }
+
+get_api_users:
+    path:     apiusers
+    defaults: { _controller: AppBundle:ApiUser:getApiUsers }
+
+get_api_user:
+    path:     apiusers
+    defaults: { _controller: AppBundle:ApiUser:getApiUser }
+
+post_api_user:
+    path:     apiusers
+    defaults: { _controller: AppBundle:ApiUser:postApiUser }
+
+delete_api_user:
+    path:     apiusers
+    defaults: { _controller: AppBundle:ApiUser:deleteApiUser }
+
+update_api_user:
+    path:     apiusers
+    defaults: { _controller: AppBundle:ApiUser:updateApiUser }
+
+post_auth_tokens:
+    path:     auth-tokens
+    defaults: { _controller: AppBundle:Credentials:postAuthTokens }

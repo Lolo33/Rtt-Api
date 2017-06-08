@@ -39,21 +39,20 @@ class Departements
      */
     private $dptNom;
 
-    /*
     /**
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lieux", mappedBy="lieuDpt")
      *
      * @var Lieux[]
      */
-    /*private $lieux;
+    private $lieux;
 
 
     public function __construct()
     {
         $this->lieux = new ArrayCollection();
     }
-*/
+
     /**
      * Get id
      *
@@ -112,7 +111,12 @@ class Departements
         return $this->dptNom;
     }
 
-    /*public function setLieux($lieux)
+    /**
+     * Set lieux
+     *
+     * @return Departements
+     */
+    public function setLieux($lieux)
     {
         $this->lieux = $lieux;
 
@@ -120,14 +124,14 @@ class Departements
     }
 
     /**
-     * Get dptNom
+     * Get lieux
      *
-     * @return string
+     * @return Lieux[]
      */
-    /*public function getLieux()
+    public function getLieux()
     {
         return $this->lieux;
-    }*/
+    }
 
 }
 

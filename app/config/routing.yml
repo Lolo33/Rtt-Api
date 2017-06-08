@@ -2,6 +2,14 @@ app:
     resource: "@AppBundle/Controller/DefaultController.php"
     type:     annotation
 
+apiuser:
+    type:     rest
+    resource: AppBundle\Controller\ApiUserController
+
+auth-tokens:
+    type:     rest
+    resource: AppBundle\Controller\AuthTokenController
+
 departements:
     type:     rest
     resource: AppBundle\Controller\DepartementsControllerController
@@ -13,3 +21,11 @@ statuts:
 lieux:
     type:     rest
     resource: AppBundle\Controller\Departements\LieuxController
+
+avatars:
+    type:     rest
+    resource: AppBundle\Controller\Membres\AvatarsController
+
+membres:
+    type:     rest
+    resource: AppBundle\Controller\MembresController
