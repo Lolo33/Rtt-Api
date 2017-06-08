@@ -1,0 +1,11 @@
+AppBundle\Entity\Departements:
+    attributes:
+        lieux:
+            groups: ['lieuDpt']
+
+AppBundle\Entity\Lieux:
+    attributes:
+        lieuNom:
+            groups: ['lieux', 'lieuDpt']
+        lieuDpt:
+            groups: ['lieux']

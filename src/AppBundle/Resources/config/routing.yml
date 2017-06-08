@@ -1,0 +1,31 @@
+
+get_departements:
+    path:     departements
+    defaults: { _controller: AppBundle:DepartementsController:getDepartements }
+
+get_departement:
+    path:     departements/{dpt_id}
+    defaults: { _controller: AppBundle:DepartementsController:getDepartement }
+liste_statut:
+    path:     statuts
+    defaults: { _controller: AppBundle:Statut:listeStatut }
+
+get_statut:
+    path:     statuts/{statut_id}
+    defaults: { _controller: AppBundle:Statut:getStatut }
+
+get_lieux:
+    path:     /lieux
+    defaults: { _controller: AppBundle:Lieux:getLieux }
+
+get_lieu:
+    path:     /lieux/{id}
+    defaults: { _controller: AppBundle:Lieux:getLieu }
+
+post_lieu:
+    path:     /lieux
+    defaults: { _controller: AppBundle:Lieux:postLieu }
+
+remove_lieu:
+    path:     /lieux/{id}
+    defaults: { _controller: AppBundle:Lieux:removeLieu }

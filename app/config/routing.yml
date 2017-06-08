@@ -1,0 +1,15 @@
+app:
+    resource: "@AppBundle/Controller/DefaultController.php"
+    type:     annotation
+
+departements:
+    type:     rest
+    resource: AppBundle\Controller\DepartementsControllerController
+
+statuts:
+    type:     rest
+    resource: AppBundle\Controller\StatutController
+
+lieux:
+    type:     rest
+    resource: AppBundle\Controller\Departements\LieuxController
