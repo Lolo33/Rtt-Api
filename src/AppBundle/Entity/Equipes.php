@@ -49,6 +49,11 @@ class Equipes
      */
     private $teamPass;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Evenements", inversedBy="eventListeEquipes")
+     */
+    private $teamEvent;
+
 
     /**
      * Get id
@@ -154,6 +159,30 @@ class Equipes
     public function getTeamPass()
     {
         return $this->teamPass;
+    }
+
+    /**
+     * Set teamEvent
+     *
+     * @param Evenements $teamEvent
+     *
+     * @return Equipes
+     */
+    public function setTeamEvent($teamEvent)
+    {
+        $this->teamEvent = $teamEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get teamEvent
+     *
+     * @return Evenements
+     */
+    public function getTeamEvent()
+    {
+        return $this->teamEvent;
     }
 }
 

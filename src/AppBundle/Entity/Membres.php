@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,6 +26,7 @@ class Membres
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="membre_pseudo", type="string", length=255)
      */
     private $membrePseudo;
@@ -31,6 +34,7 @@ class Membres
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="membre_pass", type="string", length=255)
      */
     private $membrePass;
@@ -66,7 +70,7 @@ class Membres
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="membre_derniere_connexion", type="datetime")
+     * @ORM\Column(name="membre_derniere_connexion", type="datetime", nullable=true)
      */
     private $membreDerniereConnexion;
 
@@ -101,7 +105,7 @@ class Membres
     /**
      * @var string
      *
-     * @ORM\Column(name="membre_dpt_code", type="string", length=255)
+     * @ORM\Column(name="membre_dpt_code", type="string", length=255, nullable=true)
      */
     private $membreDptCode;
 
@@ -111,6 +115,28 @@ class Membres
      * @ORM\ManyToOne(targetEntity="Avatars", inversedBy="membres")
      */
     private $membreAvatar;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comptes", mappedBy="compteMembre")
+     *
+     * @var Comptes[]
+     */
+    private $membreComptes;
+
+    /**
+     * @var InfosMango[]
+     *
+     * @ORM\OneToMany(targetEntity="InfosMango", mappedBy="imMembre")
+     */
+    private $membreMango;
+
+
+
+     public function __construct()
+     {
+         $this->membreComptes = new ArrayCollection();
+         $this->membreMango = new ArrayCollection();
+     }
 
 
     /**
@@ -434,5 +460,54 @@ class Membres
     {
         return $this->membreAvatar;
     }
+
+    /**
+     * Set membreComptes
+     *
+     * @param Comptes[] $membreComptes
+     *
+     * @return Membres
+     */
+    public function setMembreComptes($membreComptes)
+    {
+        $this->membreComptes = $membreComptes;
+
+        return $this;
+    }
+
+    /**
+     * Get membreAvatar
+     *
+     * @return Comptes[]
+     */
+    public function getMembreComptes()
+    {
+        return $this->membreComptes;
+    }
+
+    /**
+     * Set membreMango
+     *
+     * @param InfosMango[] $membreMango
+     *
+     * @return Membres
+     */
+    public function setMembreMango($membreMango)
+    {
+        $this->membreMango = $membreMango;
+
+        return $this;
+    }
+
+    /**
+     * Get membreMango
+     *
+     * @return InfosMango[]
+     */
+    public function getMembreMango()
+    {
+        return $this->membreMango;
+    }
+
 }
 

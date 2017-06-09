@@ -12,57 +12,179 @@ AppBundle\Entity\Departements:
 AppBundle\Entity\Lieux:
     attributes:
         id:
-            groups: ['lieux', 'departements']
+            groups: ['lieux', 'departements', 'event']
         lieuAdresseL1:
-            groups: ['lieux', 'departements']
+            groups: ['lieux', 'departements', 'event']
         lieuAdresseL2:
-            groups: ['lieux', 'departements']
+            groups: ['lieux', 'departements', 'event']
         lieuVille:
-            groups: ['lieux', 'departements']
+            groups: ['lieux', 'departements', 'event']
         lieuNom:
-            groups: ['lieux', 'departements']
+            groups: ['lieux', 'departements', 'event']
         lieuDpt:
-            groups: ['lieux']
+            groups: ['lieux', 'event']
+        listeEvents:
+            groups: ['lieux', 'departements']
 
 AppBundle\Entity\Avatars:
     attributes:
         id:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'team_membre']
         avatarUrl:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'team_membre']
         avatarStatut:
-            groups: ['membres', 'avatars']
-        membres:
-            groups: ['avatars']
+            groups: ['membres', 'avatars', 'team_membre']
 
 AppBundle\Entity\Membres:
     attributes:
         id:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membrePseudo:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreMail:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreTel:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreOrga:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreDateInscription:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreDerniereConnexion:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreIpInscription:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreIpDerniereConnexion:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreCodeValidation:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreValidation:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreDptCode:
-            groups: ['membres', 'avatars']
+            groups: ['membres', 'avatars', 'comptes', 'mango', 'team_membre']
         membreAvatar:
-            groups: ['membres']
+            groups: ['membres', 'comptes', 'mango', 'team_membre']
+        membreComptes:
+            groups: ['membres', 'avatars', 'mango', 'team_membre']
+        membreMango:
+            groups: ['membres', 'comptes', 'avatars', 'team_membre']
+
+AppBundle\Entity\StatutJoueur:
+    attributes:
+        id:
+            groups: ['team_membre', 'statut']
+        statutNom:
+            groups: ['team_membre', 'statut']
+
+AppBundle\Entity\InfosMango:
+    attributes:
+        id:
+            groups: ['membres', 'mango']
+        imMangoId:
+            groups: ['membres', 'mango']
+        imMembre:
+            groups: ['mango']
+        imWalletId:
+            groups: ['membres', 'mango']
+
+AppBundle\Entity\Comptes:
+    attributes:
+        id:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteRibBic:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteRibIban:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteNom:
+            groups: ['membres', 'comptes', 'team_membre']
+        comptePrenom:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteAdresseL1:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteAdresseL2:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteCp:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteVille:
+            groups: ['membres', 'comptes', 'team_membre']
+        compteMembre:
+            groups: ['comptes']
+
+AppBundle\Entity\Evenements:
+    attributes:
+        id:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventTitre:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventNbEquipes:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventJoueursMax:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventJoueursMin:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventPaiement:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventTarif:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventLieu:
+            groups: ['event', 'membres', 'mango', 'comptes', 'team']
+        eventDate:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventHeureDebut:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventHeureFin:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventPrive:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventPass:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventCompte:
+            groups: ['event', 'lieux', 'membres', 'mango', 'team']
+        eventMango:
+            groups: ['event', 'lieux', 'membres', 'comptes', 'team']
+        eventTarificationEquipe:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventOrga:
+            groups: ['event', 'lieux', 'mango', 'comptes', 'team']
+        eventOrga2:
+            groups: ['event', 'lieux', 'mango', 'comptes', 'team']
+        eventImg:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventDescriptif:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventTournoi:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes', 'team']
+        eventListeEquipes:
+            groups: ['event', 'lieux', 'membres', 'mango', 'comptes']
+
+AppBundle\Entity\EquipeMembres:
+    attributes:
+        id:
+            groups: ['team_membre', 'team', 'membres', 'statut']
+        emTeam:
+            groups: ['team_membre', 'membres', 'statut']
+        emMembre:
+            groups: ['team_membre', 'team', 'statut']
+        emStatutJoueur:
+            groups: ['team_membre', 'team', 'membres']
+        emMembrePaye:
+            groups: ['team_membre', 'team', 'membres', 'statut']
+        emPayId:
+            groups: ['team_membre', 'team', 'membres', 'statut']
+
+AppBundle\Entity\Equipes:
+    attributes:
+        id:
+            groups: ['event', 'team', 'team_membre']
+        teamNom:
+            groups: ['event', 'team', 'team_membre']
+        teamCode:
+            groups: ['event', 'team', 'team_membre']
+        teamPrive:
+            groups: ['event', 'team', 'team_membre']
+        teamPass:
+            groups: ['event', 'team', 'team_membre']
+        teamEvent:
+            groups: ['team', 'team_membre']
 
 AppBundle\Entity\ApiUser:
     attributes:

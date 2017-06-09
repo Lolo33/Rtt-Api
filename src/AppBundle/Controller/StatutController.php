@@ -28,7 +28,6 @@ class StatutController extends Controller
      */
     public function listeStatutAction(Request $request)
     {
-        $this->container =
         $statuts = $this->get('doctrine.orm.entity_manager')
             ->getRepository('AppBundle:StatutJoueur')
             ->findAll();

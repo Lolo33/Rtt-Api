@@ -29,3 +29,19 @@ avatars:
 membres:
     type:     rest
     resource: AppBundle\Controller\MembresController
+
+comptes:
+    type:     rest
+    resource: AppBundle\Controller\Membres\ComptesController
+
+infos_mango:
+    type:     rest
+    resource: AppBundle\Controller\Membres\InfosMangoController
+
+evenements:
+    type:     rest
+    resource: AppBundle\Controller\Departements\Lieux\EvenementsController
+
+equipes:
+    type:     rest
+    resource: AppBundle\Controller\Evenements\EquipesController

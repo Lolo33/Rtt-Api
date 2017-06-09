@@ -133,3 +133,67 @@ update_api_user:
 post_auth_tokens:
     path:     auth-tokens
     defaults: { _controller: AppBundle:Credentials:postAuthTokens }
+
+get_avatars:
+    path:     avatars
+    defaults: { _controller: AppBundle:Avatars:getAvatars }
+
+get_avatar:
+    path:     avatars
+    defaults: { _controller: AppBundle:Avatars:getAvatar }
+
+post_avatar:
+    path:     avatars
+    defaults: { _controller: AppBundle:Avatars:postAvatar }
+
+remove_avatar:
+    path:     avatars
+    defaults: { _controller: AppBundle:Avatars:removeAvatar }
+
+get_infos_mango:
+    path:     infos-mango
+    defaults: { _controller: AppBundle:InfosMango:getInfosMango }
+
+get_info_mango:
+    path:     infos-mango
+    defaults: { _controller: AppBundle:InfosMango:getInfoMango }
+
+post_info_mango:
+    path:     infos-mango
+    defaults: { _controller: AppBundle:InfosMango:postInfoMango }
+
+remove_info_mango:
+    path:     infos-mango
+    defaults: { _controller: AppBundle:InfosMango:removeInfoMango }
+
+update_info_mango:
+    path:     infos-mango
+    defaults: { _controller: AppBundle:InfosMango:updateInfoMango }
+
+get_evenements_lieu:
+    path:     evenements
+    defaults: { _controller: AppBundle:Evenements:getEvenementsLieu }
+
+get_evenements_dpt:
+    path:     /getEvenementsDpt
+    defaults: { _controller: AppBundle:Evenements:getEvenementsDpt }
+
+get_evenements:
+    path:     /getEvenements
+    defaults: { _controller: AppBundle:Evenements:getEvenements }
+
+get_evenement:
+    path:     /getEvenement
+    defaults: { _controller: AppBundle:Evenements:getEvenement }
+
+post_evenement:
+    path:     /postEvenement
+    defaults: { _controller: AppBundle:Evenements:postEvenement }
+
+remove_evenement:
+    path:     /removeEvenement
+    defaults: { _controller: AppBundle:Evenements:removeEvenement }
+
+update_evenement:
+    path:     /updateEvenement
+    defaults: { _controller: AppBundle:Evenements:updateEvenement }

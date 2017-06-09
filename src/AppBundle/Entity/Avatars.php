@@ -36,18 +36,6 @@ class Avatars
      */
     private $avatarStatut;
 
-    /**
-     * @var Membres[]
-     *
-     * @ORM\OneToMany(targetEntity="Membres", mappedBy="membreAvatar")
-     */
-    private $membres;
-
-    public function __construct()
-    {
-        $this->membres = new ArrayCollection();
-    }
-
 
     /**
      * Get id
@@ -105,30 +93,6 @@ class Avatars
     public function getAvatarStatut()
     {
         return $this->avatarStatut;
-    }
-
-    /**
-     * Set membres
-     *
-     * @param Membres[]
-     *
-     * @return Avatars
-     */
-    public function setMembres($membres)
-    {
-        $this->membres = $membres;
-
-        return $this;
-    }
-
-    /**
-     * Get membres
-     *
-     * @return Membres[]
-     */
-    public function getMembres()
-    {
-        return $this->membres;
     }
 }
 

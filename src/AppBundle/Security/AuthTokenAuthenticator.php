@@ -18,7 +18,7 @@ class AuthTokenAuthenticator implements SimplePreAuthenticatorInterface, Authent
     /**
      * Durée de validité du token en secondes, 12 heures
      */
-    const TOKEN_VALIDITY_DURATION = 12 * 3600;
+    const TOKEN_VALIDITY_DURATION = 48 * 3600;
 
     protected $httpUtils;
 
@@ -39,7 +39,7 @@ class AuthTokenAuthenticator implements SimplePreAuthenticatorInterface, Authent
         $authTokenHeader = $request->headers->get('X-Auth-Token');
 
         if (!$authTokenHeader) {
-            throw new BadCredentialsException('X-Auth-Token header is required');
+            throw new BadCredentialsException('Le token est manquant');
         }
 
         return new PreAuthenticatedToken(
@@ -64,7 +64,7 @@ class AuthTokenAuthenticator implements SimplePreAuthenticatorInterface, Authent
         $authToken = $userProvider->getAuthToken($authTokenHeader);
 
         if (!$authToken || !$this->isTokenValid($authToken)) {
-            throw new BadCredentialsException('Invalid authentication token');
+            throw new BadCredentialsException('Token invalide');
         }
 
         $user = $authToken->getApiUser();

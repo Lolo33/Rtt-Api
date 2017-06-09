@@ -77,7 +77,6 @@ class MembresController extends Controller
             ->setMembreValidation(false);
 
         $form = $this->createForm(MembresType::class, $membre);
-
         $form->submit($request->request->all());
         if ($form->isValid()) {
             $em = $this->get('doctrine.orm.entity_manager');
@@ -107,7 +106,7 @@ class MembresController extends Controller
                 ));
 
         if (empty($membre_a_connecter))
-            return \FOS\RestBundle\View\View::create(['erreur' => 'err_user_pass'], Response::HTTP_NOT_FOUND);
+            return \FOS\RestBundle\View\View::create(['erreur' => 'err_user_pass'], Response::HTTP_FORBIDDEN);
 
         return $membre_a_connecter;
     }

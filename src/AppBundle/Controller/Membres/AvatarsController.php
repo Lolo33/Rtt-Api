@@ -2,31 +2,55 @@
 
 namespace AppBundle\Controller\Membres;
 
+use Psr\Container\ContainerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 class AvatarsController extends Controller
 {
 
-
-    public function getAvatarsAction()
+    public function __construct(ContainerInterface $container)
     {
-        return $this->render('AppBundle:Avatars:get_avatars.html.twig', array(
-            // ...
-        ));
+        $this->container = $container;
     }
 
-    public function getAvatarAction($id)
+    /**
+     * @Rest\View()
+     * @Rest\Get("/avatars")
+     */
+    public function getAvatarsAction(Request $request)
     {
-        return $this->render('AppBundle:Avatars:get_avatar.html.twig', array(
-            // ...
-        ));
+        $avatars = $this->getDoctrine()->getRepository('AppBundle:Avatars')->findAll();
+        return $avatars;
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("/membres/{id}/avatar")
+     */
+    public function getAvatarMembreAction(Request $request)
+    {
+        $membre = $this->getDoctrine()->getRepository('AppBundle:Membres')->find($request->get('id'));
+        return $membre->getMembreAvatar();
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("/avatars/{id}")
+     */
+    public function getAvatarAction(Request $request)
+    {
+        $avatar = $this->getDoctrine()->getRepository('AppBundle:Avatars')->find($request->get('id'));
     }
 
     public function postAvatarAction()
     {
-        return $this->render('AppBundle:Avatars:post_avatar.html.twig', array(
-            // ...
-        ));
+
     }
 
     public function deleteAvatarAction($id)

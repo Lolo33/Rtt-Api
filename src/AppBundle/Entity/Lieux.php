@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -64,7 +65,6 @@ class Lieux
     /**
      * @var Departements
      *
-     * @Assert\NotNull()
      * @ORM\ManyToOne(targetEntity="Departements", inversedBy="lieux")
      */
     private $lieuDpt;
@@ -76,6 +76,19 @@ class Lieux
      */
     private $lieuLogo;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Evenements", mappedBy="eventLieu")
+     *
+     * @var Evenements[]
+     */
+    private $listeEvents;
+
+
+
+    public function __construct()
+    {
+        $this->listeEvent = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -254,5 +267,30 @@ class Lieux
     {
         return $this->lieuLogo;
     }
+
+    /**
+     * Set listeEvents
+     *
+     * @param Evenements[] $listeEvents
+     *
+     * @return Lieux
+     */
+    public function setListeEvents($listeEvents)
+    {
+        $this->listeEvents = $listeEvents;
+
+        return $this;
+    }
+
+    /**
+     * Get listeEvents
+     *
+     * @return Evenements[]
+     */
+    public function getListeEvents()
+    {
+        return $this->listeEvents;
+    }
+
 }
 

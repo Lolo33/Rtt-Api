@@ -17,7 +17,7 @@ class AvatarsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', 'avatars/{id}');
+        $crawler = $client->request('GET', 'avatars');
     }
 
     public function testPostavatar()
@@ -27,14 +27,7 @@ class AvatarsControllerTest extends WebTestCase
         $crawler = $client->request('GET', 'avatars');
     }
 
-    public function testDeleteavatar()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', 'avatars/{id}');
-    }
-
-    public function testUpdateavatar()
+    public function testRemoveavatar()
     {
         $client = static::createClient();
 

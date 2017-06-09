@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comptes
@@ -31,20 +32,22 @@ class Comptes
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="compte_rib_iban", type="string", length=255)
      */
     private $compteRibIban;
 
     /**
-     * @var int
+     * @var Membres
      *
-     * @ORM\Column(name="compte_membre_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Membres", inversedBy="membreComptes")
      */
-    private $compteMembreId;
+    private $compteMembre;
 
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="compte_nom", type="string", length=255)
      */
     private $compteNom;
@@ -52,6 +55,7 @@ class Comptes
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="compte_prenom", type="string", length=255)
      */
     private $comptePrenom;
@@ -59,6 +63,7 @@ class Comptes
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="compte_adresse_l1", type="string", length=255)
      */
     private $compteAdresseL1;
@@ -73,6 +78,7 @@ class Comptes
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="compte_cp", type="string", length=255)
      */
     private $compteCp;
@@ -80,6 +86,7 @@ class Comptes
     /**
      * @var string
      *
+     * @Assert\NotNull()
      * @ORM\Column(name="compte_ville", type="string", length=255)
      */
     private $compteVille;
@@ -144,27 +151,27 @@ class Comptes
     }
 
     /**
-     * Set compteMembreId
+     * Set compteMembre
      *
-     * @param integer $compteMembreId
+     * @param Membres $compteMembre
      *
      * @return Comptes
      */
-    public function setCompteMembreId($compteMembreId)
+    public function setCompteMembre($compteMembre)
     {
-        $this->compteMembreId = $compteMembreId;
+        $this->compteMembre = $compteMembre;
 
         return $this;
     }
 
     /**
-     * Get compteMembreId
+     * Get compteMembre
      *
-     * @return int
+     * @return Membres
      */
-    public function getCompteMembreId()
+    public function getCompteMembre()
     {
-        return $this->compteMembreId;
+        return $this->compteMembre;
     }
 
     /**
